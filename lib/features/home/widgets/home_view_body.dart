@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/core/theming/styles.dart';
 import 'package:notes/core/widgets/constants.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,7 +12,10 @@ class HomeViewBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            
+            Text(
+              'Notes',
+              style: Styles.textStyle18,
+            )
           ],
         ),
       ),
