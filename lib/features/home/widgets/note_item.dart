@@ -25,30 +25,14 @@ class NoteItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Today',
-                  style: Styles.textStyle18.copyWith(color: Colors.white),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: const Color.fromARGB(255, 240, 177, 173)
-                  ),
-                  child: IconButton(
-                    onPressed: (){}, 
-                    icon: const Icon(Icons.edit, color: Colors.black,)
-                  ),
-                )
-              ],
+            Text(
+              'Today',
+              style: Styles.textStyle18.copyWith(color: Colors.white),
             ),
+            SizedBox(height: 8.h,),
             Text(
               '8:00 PM',
-              style: Styles.textStyle18.copyWith(
-                color: Colors.white
-              ),
+              style: Styles.textStyle18.copyWith(color: Colors.white),
             ),
             SizedBox(height: 8.h,),
             Text(
