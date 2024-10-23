@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notes/core/theming/colors.dart';
 import 'package:notes/core/theming/styles.dart';
 
 class NoteItem extends StatelessWidget {
@@ -18,37 +19,21 @@ class NoteItem extends StatelessWidget {
           topRight: Radius.circular(12),
           bottomLeft: Radius.circular(12),
         ),
-        color: Colors.red
+        color: ColorManger.kPrimaryColor
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Today',
-                  style: Styles.textStyle18.copyWith(color: Colors.white),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: const Color.fromARGB(255, 240, 177, 173)
-                  ),
-                  child: IconButton(
-                    onPressed: (){}, 
-                    icon: const Icon(Icons.edit, color: Colors.black,)
-                  ),
-                )
-              ],
+            Text(
+              'Today',
+              style: Styles.textStyle18.copyWith(color: Colors.white),
             ),
+            SizedBox(height: 8.h,),
             Text(
               '8:00 PM',
-              style: Styles.textStyle18.copyWith(
-                color: Colors.white
-              ),
+              style: Styles.textStyle18.copyWith(color: Colors.white),
             ),
             SizedBox(height: 8.h,),
             Text(
