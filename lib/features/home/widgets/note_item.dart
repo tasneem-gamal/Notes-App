@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notes/core/theming/colors.dart';
 import 'package:notes/core/theming/styles.dart';
 
 class NoteItem extends StatelessWidget {
@@ -18,7 +19,7 @@ class NoteItem extends StatelessWidget {
           topRight: Radius.circular(12),
           bottomLeft: Radius.circular(12),
         ),
-        color: Colors.red
+        color: ColorManger.kPrimaryColor
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
