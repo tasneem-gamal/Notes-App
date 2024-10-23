@@ -14,6 +14,7 @@ class Notes extends StatelessWidget {
       child: MaterialApp(
         title: 'Notes',
         theme: ThemeData(
+          useMaterial3: false,
           scaffoldBackgroundColor: Colors.white,
           fontFamily: 'Inter',
         ),
