@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/core/widgets/constants.dart';
 import 'package:notes/features/edit_note/widgets/custom_app_bar.dart';
+import 'package:notes/features/edit_note/widgets/note_typing_field.dart';
 
 class EditNoteViewBody extends StatelessWidget {
   const EditNoteViewBody({super.key});
@@ -9,10 +11,14 @@ class EditNoteViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: Constants.editPadding,
-      child: const Column(
+      child: Column(
         children: [
-          CustomAppBar()
+          const CustomAppBar(),
+          SizedBox(height: 24.h,),
+          const NoteTypingField()
         ],
       ),
     );
   }
+}
+
