@@ -18,7 +18,7 @@ class NoteItem extends StatelessWidget {
       },
       child: Container(
         width: 160.w,
-        height: 180.h,
+        height: 200.h,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(12),
