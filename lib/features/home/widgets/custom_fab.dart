@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes/features/home/logic/add_note_cubit/add_note_cubit.dart';
 import 'package:notes/features/home/widgets/add_note_dialog.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
@@ -13,7 +15,10 @@ class CustomFloatingActionButton extends StatelessWidget {
         onPressed: () {
           showDialog(
               context: context,
-              builder: (context) => const AddNoteDialog()
+              builder: (context) => BlocProvider(
+              create: (_) => AddNoteCubit(),
+              child: const AddNoteDialog(),
+            ),
             );
         },
         backgroundColor: Colors.black,
