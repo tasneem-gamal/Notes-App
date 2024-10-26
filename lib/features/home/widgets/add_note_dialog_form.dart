@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes/core/theming/colors.dart';
+import 'package:notes/features/home/data/note_model.dart';
+import 'package:notes/features/home/logic/add_note_cubit/add_note_cubit.dart';
 
 class AddNoteDialogForm extends StatefulWidget {
   const AddNoteDialogForm({super.key});
@@ -64,6 +68,13 @@ class _AddNoteDialogFormState extends State<AddNoteDialogForm> {
   void addButtonValidate() {
     if(formKey.currentState!.validate()){
       formKey.currentState!.save();
+
+      final String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      final String formattedTime = DateFormat('hh:mm a').format(DateTime.now());
+      
+      var noteModel = NoteModel(note: note!, date: formattedDate, time: formattedTime);
+      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+
     } else{
       autovalidateMode = AutovalidateMode.always;
       setState(() {
