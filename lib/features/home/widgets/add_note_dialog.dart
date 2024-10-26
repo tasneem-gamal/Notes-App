@@ -4,6 +4,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes/core/helpers/extension.dart';
 import 'package:notes/core/theming/styles.dart';
 import 'package:notes/features/home/logic/add_note_cubit/add_note_cubit.dart';
+import 'package:notes/features/home/logic/read_notes_cubit/notes_cubit.dart';
 import 'package:notes/features/home/widgets/add_note_dialog_form.dart';
 
 class AddNoteDialog extends StatelessWidget {
@@ -13,11 +14,10 @@ class AddNoteDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AddNoteCubit, AddNoteState>(
       listener: (context, state) {
-            if(state is AddNoteFailure){
-              print('failed ${state.errMessage}');
-            }
+            if(state is AddNoteFailure){}
 
             if(state is AddNoteSuccess){
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               context.pop();
             }
           },
