@@ -42,14 +42,7 @@ class _AddNoteDialogFormState extends State<AddNoteDialogForm> {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () {
-                    if(formKey.currentState!.validate()){
-                      formKey.currentState!.save();
-                    } else{
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {
-                        
-                      });
-                    }
+                    addButtonValidate();
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: ColorManger.kPrimaryColor,
@@ -66,6 +59,17 @@ class _AddNoteDialogFormState extends State<AddNoteDialogForm> {
         ],
       ),
     );
+  }
+
+  void addButtonValidate() {
+    if(formKey.currentState!.validate()){
+      formKey.currentState!.save();
+    } else{
+      autovalidateMode = AutovalidateMode.always;
+      setState(() {
+        
+      });
+    }
   }
 
   String? validateNoteInput(value){
