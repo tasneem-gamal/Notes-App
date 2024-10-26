@@ -52,6 +52,15 @@ class NoteItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 100),
+                child: IconButton(
+                  onPressed: (){
+                    noteModel.delete();
+                  }, 
+                  icon: const Icon(Icons.delete)
+                ),
+              )
             ],
           ),
         ),
