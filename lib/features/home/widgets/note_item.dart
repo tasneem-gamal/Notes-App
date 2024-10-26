@@ -4,12 +4,14 @@ import 'package:notes/core/helpers/extension.dart';
 import 'package:notes/core/routing/routes.dart';
 import 'package:notes/core/theming/colors.dart';
 import 'package:notes/core/theming/styles.dart';
+import 'package:notes/features/home/data/note_model.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
-    super.key,
+    super.key, required this.noteModel,
   });
-
+  
+  final NoteModel noteModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,17 +35,17 @@ class NoteItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Today',
+                noteModel.date,
                 style: Styles.textStyle18.copyWith(color: Colors.white),
               ),
               SizedBox(height: 8.h,),
               Text(
-                '8:00 PM',
+                noteModel.time,
                 style: Styles.textStyle18.copyWith(color: Colors.white),
               ),
               SizedBox(height: 8.h,),
               Text(
-                'Doctor Appointmet bla bla blka',
+                noteModel.note,
                 style: Styles.textStyle16.copyWith(
                   color: Colors.white
                 ),

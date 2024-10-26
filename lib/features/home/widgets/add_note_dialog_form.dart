@@ -69,7 +69,7 @@ class _AddNoteDialogFormState extends State<AddNoteDialogForm> {
     if(formKey.currentState!.validate()){
       formKey.currentState!.save();
 
-      final String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      final String formattedDate = formatNoteDate(DateTime.now());
       final String formattedTime = DateFormat('hh:mm a').format(DateTime.now());
       
       var noteModel = NoteModel(note: note!, date: formattedDate, time: formattedTime);
@@ -82,6 +82,21 @@ class _AddNoteDialogFormState extends State<AddNoteDialogForm> {
       });
     }
   }
+
+
+String formatNoteDate(DateTime date) {
+  final now = DateTime.now();
+  final today = DateTime(now.year, now.month, now.day);
+  final yesterday = today.subtract(const Duration(days: 1));
+
+  if (date.isAfter(today)) {
+    return 'Today';
+  } else if (date.isAfter(yesterday)) {
+    return 'Yesterday';
+  } else {
+    return DateFormat('yyyy-MM-dd').format(date); 
+  }
+}
 
   String? validateNoteInput(value){
               if(value?.isEmpty ?? true){

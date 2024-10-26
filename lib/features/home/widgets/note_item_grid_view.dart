@@ -22,7 +22,7 @@ class NoteItemGridView extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12),
               itemCount: notes.length,
-              itemBuilder: (context, index) => const NoteItem()),
+              itemBuilder: (context, index) => NoteItem(noteModel: notes[index],)),
         );
       },
     );
