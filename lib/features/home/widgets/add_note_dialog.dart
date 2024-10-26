@@ -11,17 +11,8 @@ class AddNoteDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      title: Text(
-        'Add Note',
-        style: Styles.textStyle18,
-      ),
-      actions: [
-        BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
+    return BlocConsumer<AddNoteCubit, AddNoteState>(
+      listener: (context, state) {
             if(state is AddNoteFailure){
               print('failed ${state.errMessage}');
             }
@@ -30,14 +21,21 @@ class AddNoteDialog extends StatelessWidget {
               context.pop();
             }
           },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
-              child: AddNoteDialogForm()
-            );
-          },
-        )
-      ],
+      builder: (context, state) {
+        return ModalProgressHUD(
+          inAsyncCall: state is AddNoteLoading ? true : false,
+          child: AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            title: Text(
+              'Add Note',
+              style: Styles.textStyle18,
+            ),
+            actions: const [AddNoteDialogForm()],
+          ),
+        );
+      },
     );
   }
 }
