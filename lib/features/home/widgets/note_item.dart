@@ -18,7 +18,7 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        context.pushNamed(Routes.editView);
+        context.pushNamed(Routes.editView, arguments: noteModel);
       },
       child: Container(
         width: 160.w,
