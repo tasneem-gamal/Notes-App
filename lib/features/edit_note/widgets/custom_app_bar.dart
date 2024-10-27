@@ -6,9 +6,9 @@ import '../../../core/theming/styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
-    super.key,
+    super.key, this.onPressed,
   });
-
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
           ],
         ),
         TextButton(
-          onPressed: (){}, 
+          onPressed: onPressed, 
           child: Text(
             'Done',
             style: Styles.textStyle18.copyWith(
