@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 
 class NoteTypingField extends StatelessWidget {
   const NoteTypingField({
-    super.key,
+    super.key, this.onChanged,
   });
-
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: TextField(
+        onChanged: onChanged,
         maxLines: null,
         expands: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: 'Type something....',
           border: InputBorder.none
         ),
