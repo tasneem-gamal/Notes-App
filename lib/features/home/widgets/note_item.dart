@@ -20,6 +20,9 @@ class NoteItem extends StatelessWidget {
       onTap: (){
         context.pushNamed(Routes.editView, arguments: noteModel);
       },
+      onLongPress: (){
+        deleteNoteDialog(context);
+      },
       child: Container(
         width: 160.w,
         height: 200.h,
@@ -54,18 +57,33 @@ class NoteItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 100),
-                child: IconButton(
-                  onPressed: (){
-                    noteModel.delete();
-                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                  }, 
-                  icon: const Icon(Icons.delete)
-                ),
-              )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  void deleteNoteDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder:(BuildContext context)=> GestureDetector(
+        onTap: () {
+          noteModel.delete();
+          BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+          context.pop();
+        },
+        child: AlertDialog(
+          backgroundColor: Colors.red,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            title: Text(
+              'Delete note',
+              style: Styles.textStyle16.copyWith(
+                color: Colors.white
+              ),
+            ),
         ),
       ),
     );

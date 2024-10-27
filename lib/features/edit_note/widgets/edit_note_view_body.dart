@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notes/core/helpers/extension.dart';
 import 'package:notes/core/widgets/constants.dart';
 import 'package:notes/features/edit_note/widgets/custom_app_bar.dart';
 import 'package:notes/features/edit_note/widgets/note_typing_field.dart';
@@ -25,11 +24,12 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             onPressed: (){
               widget.noteModel.note = note ?? widget.noteModel.note;
               widget.noteModel.save();
-              context.pop();
+              Navigator.pop(context, widget.noteModel);
             },
           ),
           SizedBox(height: 24.h,),
           NoteTypingField(
+            initialValue: widget.noteModel.note,
             onChanged: (value){
               note = value;
             },
